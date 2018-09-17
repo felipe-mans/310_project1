@@ -7,7 +7,7 @@ public class Flight {
     String destination;
     String price;
 
-    public Class ( String o, String d, String p ){
+    public Flight ( String o, String d, String p ){
 	origin = o;
 	destination = d;
 	price = p;
