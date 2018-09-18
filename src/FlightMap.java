@@ -3,9 +3,9 @@ import java.util.*;
 
 public class FlightMap {
 
-    String originCity;
-    ArrayList<String> cities;
-    ArrayList<Flight> allFlights;
+    public String originCity;
+    public ArrayList<String> cities;
+    public ArrayList<Flight> allFlights;
 
     //Constructor
     public FlightMap( String s ) {
