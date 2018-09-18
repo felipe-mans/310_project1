@@ -2,7 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class SearchMap {
-
+    
+    // Main method to read in command line arguments and read/write file
     public static void main(String [] args) {
 	String inputFile = args[0];
 	String outputFile = args[1];
@@ -16,6 +17,8 @@ public class SearchMap {
 	    FileReader fileReader = new FileReader(inputFile);
 	    BufferedReader buff = new BufferedReader(fileReader);
 
+	    //Read all lines from input file
+	    
 	    while( (line = buff.readLine()) != null ){
 		String[] data = line.split(" ");
 		if( data.length == 1 ) {

@@ -7,6 +7,7 @@ public class Flight {
     String destination;
     String price;
 
+    //Constructor
     public Flight ( String o, String d, String p ){
 	origin = o;
 	destination = d;

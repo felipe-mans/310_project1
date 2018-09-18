@@ -7,20 +7,24 @@ public class FlightMap {
     ArrayList<String> cities;
     ArrayList<Flight> allFlights;
 
+    //Constructor
     public FlightMap( String s ) {
 	originCity = s;
 	cities = new ArrayList<String>();
 	allFlights = new ArrayList<Flight>();
     }
 
+    // Keep track of all cities in map
     public void addCity( String c ) {
 	cities.add(c);
     }
 
+    //Keep track of all possible flights
     public void addFlight( Flight f ) {
 	allFlights.add(f);
     }
 
+    //Return String output of path from origin city to destination
     public String findPathFrom( String destination, ArrayList<Flight> flightPaths ){
 	if( destination.equals(originCity) ){
 	    return originCity;
@@ -35,7 +39,8 @@ public class FlightMap {
 	}
 	return null;
     }
-
+    
+    //Return total price from origin city to destination
     public int findTotalPrice( String destination, ArrayList<Flight> flightPaths ){
 	int totalPrice = 0;
 	if( destination.equals(originCity) )
@@ -50,6 +55,7 @@ public class FlightMap {
 	return 0;
     }
 
+    //Return data for output file writing. Each String array is a new line
     public ArrayList<String[]> getMap() {
 	ArrayList<String[]> output = new ArrayList<String[]>();
 	ArrayList<Flight> flightPaths = new ArrayList<Flight>();
@@ -58,6 +64,7 @@ public class FlightMap {
 	int count = 0;
 	String currCity = originCity;
 
+	//Add direct flights from origin city to possible destinations
 	for (Flight f : allFlights) {
 	    if (f.origin.equals(currCity)) {
 		destinations[count] = f.destination;
@@ -68,6 +75,7 @@ public class FlightMap {
 
 	int check = 0;
 
+	//Find other flights using direct flights as a connection (recursively)
 	while( check < count ){
 	    currCity = destinations[check];
 
@@ -88,6 +96,7 @@ public class FlightMap {
 	String[] firstLine = {"Destination", "Flight Route from " + originCity, "Total Cost"};
 	output.add(firstLine);
 
+	//Format flight information to string arrays
 	for( String city : destinations ){
 	    if( city != null ) {
 		
