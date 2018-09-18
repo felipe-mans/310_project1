@@ -1,0 +1,39 @@
+<project name="project1" default="compile" basedir=".">
+
+  <description>
+    Build file for project 1
+  </description>
+
+  <!-- global properties -->
+  <property name="src" location="src"/>
+  <property name="bin" location="bin"/>
+  <property name="dist" location="dist"/>
+  <property name="doc" location="doc"/>
+
+  <target name="init" description="make project directories">
+    <mkdir dir="${bin}" />
+    <mkdir dir="${dist}" />
+    <mkdir dir="${doc}" />
+  </target>
+
+  <target name="compile" depends="init" description="compile java files">
+    <javac srcdir="${src}" destdir="${bin}" />
+  </target>
+
+  <target name="dist" depends="init" description="generate jar files">
+    <jar destfile="${dist}/project1.jar" basedir="${bin}" />
+  </target>
+
+  <target name="doc" depends="init" description="generate HTML documentation">
+    <javadoc destdir="${doc}">
+      <fileset dir="${src}" />
+    </javadoc>
+  </target>
+
+  <target name="clean" description="clean up">
+    <delete dir="${bin}" />
+    <delete dir="${dist}" />
+    <delete dir="${doc}" />
+  </target>
+
+</project>
